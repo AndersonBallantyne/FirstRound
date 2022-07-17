@@ -1,0 +1,48 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+#leftCol{
+    flex: auto;
+    align-content: center;
+    text-align: center;
+    font-size: x-large;
+    max-width: auto;
+    border-radius: 15px;
+    padding: 24px;
+    margin: 20px;
+    background-color: rgb(196, 194, 194);
+    display: block;
+    min-width: fit-content;
+    justify-content: space-around;
+    
+    
+}
+#rating{
+    font-size: small;   
+}
+
+#cover_filler{
+  position: static;
+  height: 125px;
+}
+/*
+.cardbody {
+    
+    background: hsla(259, 84%, 78%, 1);
+    background: linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B597F6", endColorstr="#96C6EA", GradientType=1 );
+   width: 400px;
+   height: 200px;
+   border-radius: 12px;
+   padding: 16px 16px;
+   display: block;
+   
+   
+    
+  }

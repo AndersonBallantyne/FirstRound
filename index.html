@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON To HTML</title>
+    
+  </head>
+
+  <body>
+    <div class="jumbotron">
+      <h1 class="display-4"><img src="" alt="" srcset="" />[i++]</h1>
+      <p class="lead">Iterations</p>
+      <hr class="my-4" />
+      <p>5000 INFLUENCIAL ALBUMS</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </p>
+    </div>
+
+    <div></div>
+
+    <div class="mx-auto" style="width: 600px">
+      <div class="input-group mb-5">
+        <input
+          id="newInput"
+          type="text"
+          class="form-control"
+          placeholder="Search......"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">
+            Artist
+          </button>
+          <button class="btn btn-outline-secondary" type="button">Album</button>
+          <button class="btn btn-outline-secondary" type="button">
+            Rating
+          </button>
+          <button class="btn btn-outline-secondary" type="button">Year</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto" style="width: 850px">
+      <table class="table">
+        <tr class="bg-white">
+          <th class="text-info">#</th>
+          <th class="text-info">Album Name</th>
+          <th class="text-info">Artist Name</th>
+          <th class="text-info">Rating</th>
+          <th class="text-info" class="text-nowrap">Release Date</th>
+        </tr>
+
+        <tbody id="theTable" class="text-muted"></tbody>
+      </table>
+    </div>
+
+    <script>
+      let myArray = [
+        {
+          "": "1",
+          position: "1",
+          release_name: "OK Computer",
+          artist_name: "Radiohead",
+          release_date: "1997-06-16",
+          release_type: "album",
+          primary_genres: "Alternative Rock, Art Rock",
+          secondary_genres: "NA",
+          descriptors:
+            "melancholic, anxious, futuristic, malevocals, existential, alienation, atmospheric, lonely, cold, pessimistic",
+          avg_rating: "4.24",
+          rating_count: "74027",
+          review_count: "1541",
+        },
+        {
+          "": "2",
+          position: "2",
+          release_name: "Kid A",
+          artist_name: "Radiohead",
+          release_date: "2000-10-03",
+          release_type: "album",
+          primary_genres: "Art Rock, Experimental Rock, Electronic",
+          secondary_genres: "Ambient, Electronic, IDM",
+          descriptors:
+            "cold, melancholic, futuristic, anxious, atmospheric, sombre, cryptic, abstract, introspective, malevocals",
+          avg_rating: "4.23",
+          rating_count: "61658",
+          review_count: "751",
+        },
+        {
+          "": "3",
+          position: "3",
+          release_name: "The Dark Side of the Moon",
+          artist_name: "Pink Floyd",
+          release_date: "1973-03-23",
+          release_type: "album",
+          primary_genres: "Art Rock, Progressive Rock",
+          secondary_genres: "Psychedelic Rock, Space Rock",
+          descriptors:
+            "philosophical, atmospheric, introspective, existential, mellow, conceptalbum, malevocals, psychedelic, progressive, epic",
+          avg_rating: "4.21",
+          rating_count: "60192",
+          review_count: "1557",
+        },
+        {
+          "": "4",
+          position: "4",
+          release_name: "Loveless",
+          artist_name: "My Bloody Valentine",
+          release_date: "1991-11-11",
+          release_type: "album",
+          primary_genres: "Shoegaze, Noise Pop",
+          secondary_genres: "Dream Pop, Neo-Psychedelia",
+          descriptors:
+            "noisy, ethereal, atmospheric, romantic, love, dense, hypnotic, psychedelic, femalevocals, lush",
+          avg_rating: "4.24",
+          rating_count: "53174",
+          review_count: "1264",
+        },
+        {
+          "": "5",
+          position: "5",
+          release_name: "My Beautiful Dark Twisted Fantasy",
+          artist_name: "Kanye West",
+          release_date: "2010-11-22",
+          release_type: "album",
+          primary_genres: "Pop Rap, Hip Hop",
+          secondary_genres: "Art Pop",
+          descriptors:
+            "epic, boastful, passionate, sampling, hedonistic, vulgar, anthemic, melodic, malevocals, introspective",
+          avg_rating: "4.09",
+          rating_count: "52149",
+          review_count: "638",
+        },
+        {
+          "": "6",
+          position: "6",
+          release_name: "In Rainbows",
+          artist_name: "Radiohead",
+          release_date: "2007-10-10",
+          release_type: "album",
+          primary_genres: "Art Rock, Alternative Rock",
+          secondary_genres: "Electronic, Dream Pop, Art Pop",
+          descriptors:
+            "lush, malevocals, introspective, melancholic, bittersweet, mellow, atmospheric, warm, ethereal, longing",
+          avg_rating: "4.2",
+          rating_count: "51335",
+          review_count: "752",
+        },
+        {
+          "": "7",
+          position: "7",
+          release_name: "Wish You Were Here",
+          artist_name: "Pink Floyd",
+          release_date: "1975-09-12",
+          release_type: "album",
+          primary_genres: "Progressive Rock, Art Rock",
+          secondary_genres: "Space Rock, Psychedelic Rock",
+          descriptors:
+            "melancholic, atmospheric, progressive, malevocals, conceptalbum, serious, introspective, longing, alienation, bittersweet",
+          avg_rating: "4.3",
+          rating_count: "51246",
+          review_count: "1006",
+        },
+        {
+          "": "8",
+          position: "8",
+          release_name: "In the Aeroplane Over the Sea",
+          artist_name: "Neutral Milk Hotel",
+          release_date: "1998-02-10",
+          release_type: "album",
+          primary_genres: "Indie Folk, Indie Rock",
+          secondary_genres:
+            "Psychedelic Folk, Singer-Songwriter, Lo-Fi/Slacker Rock, British Brass Band",
+          descriptors:
+            "passionate, poetic, death, cryptic, surreal, bittersweet, acoustic, melodic, malevocals, love",
+          avg_rating: "4.09",
+          rating_count: "50353",
+          review_count: "983",
+        },
+        {
+          "": "9",
+          position: "9",
+          release_name: "The Bends",
+          artist_name: "Radiohead",
+          release_date: "1995-03-13",
+          release_type: "album",
+          primary_genres: "Alternative Rock",
+          secondary_genres: "Britpop",
+          descriptors:
+            "melancholic, lonely, melodic, anxious, introspective, malevocals, bittersweet, existential, alienation, longing",
+          avg_rating: "3.84",
+          rating_count: "48578",
+          review_count: "798",
+        },
+        {
+          "": "10",
+          position: "10",
+          release_name: "To Pimp a Butterfly",
+          artist_name: "Kendrick Lamar",
+          release_date: "2015-03-15",
+          release_type: "album",
+          primary_genres: "Conscious Hip Hop, West Coast Hip Hop, Jazz Rap",
+          secondary_genres:
+            "Political Hip Hop, Neo-Soul, Funk, Poetry, Experimental Hip Hop",
+          descriptors:
+            "political, conscious, poetic, conceptalbum, protest, introspective, urban, malevocals, eclectic, passionate",
+          avg_rating: "4.3",
+          rating_count: "47821",
+          review_count: "415",
+        },
+        {
+          "": "11",
+          position: "11",
+          release_name: "The Velvet Underground & Nico",
+          artist_name: "The Velvet Underground & Nico",
+          release_date: "1967-03-12",
+          release_type: "album",
+          primary_genres: "Art Rock, Experimental Rock",
+          secondary_genres:
+            "Proto-Punk, Noise Rock, Garage Rock, Psychedelic Rock",
+          descriptors:
+            "drugs, sexual, raw, urban, noisy, malevocals, eclectic, femalevocals, avant-garde, nihilistic",
+          avg_rating: "4.23",
+          rating_count: "47601",
+          review_count: "944",
+        },
+        {
+          "": "12",
+          position: "12",
+          release_name: "In the Court of the Crimson King",
+          artist_name: "King Crimson",
+          release_date: "1969-10-10",
+          release_type: "album",
+          primary_genres: "Progressive Rock, Art Rock",
+          secondary_genres:
+            "Symphonic Prog, Jazz-Rock, Free Improvisation, Psychedelic Rock",
+          descriptors:
+            "fantasy, epic, progressive, complex, philosophical, surreal, poetic, malevocals, melancholic, abstract",
+          avg_rating: "4.3",
+          rating_count: "47415",
+          review_count: "833",
+        },
+        {
+          "": "13",
+          position: "13",
+          release_name: "Abbey Road",
+          artist_name: "The Beatles",
+          release_date: "1969-09-26",
+          release_type: "album",
+          primary_genres: "Pop Rock",
+          secondary_genres: "Psychedelic Pop, Progressive Pop",
+          descriptors:
+            "melodic, warm, malevocals, summer, bittersweet, uplifting, love, romantic, eclectic, sentimental",
+          avg_rating: "4.25",
+          rating_count: "46968",
+          review_count: "969",
+        },
+        {
+          "": "14",
+          position: "14",
+          release_name: "Sgt. Pepper's Lonely Hearts Club Band",
+          artist_name: "The Beatles",
+          release_date: "1967-06-01",
+          release_type: "album",
+          primary_genres: "Psychedelic Pop, Pop Rock",
+          secondary_genres:
+            "Art Rock, Psychedelic Rock, Baroque Pop, Sunshine Pop",
+          descriptors:
+            "psychedelic, playful, melodic, malevocals, optimistic, lush, eclectic, uplifting, warm, quirky",
+          avg_rating: "4.13",
+          rating_count: "45720",
+          review_count: "887",
+        },
+        {
+          "": "15",
+          position: "15",
+          release_name: "Nevermind",
+          artist_name: "Nirvana",
+          release_date: "1991-09-24",
+          release_type: "album",
+          primary_genres: "Grunge, Alternative Rock",
+          secondary_genres: "Punk Rock",
+          descriptors:
+            "energetic, rebellious, angry, malevocals, apathetic, sarcastic, alienation, passionate, anxious, self-hatred",
+          avg_rating: "3.93",
+          rating_count: "45503",
+          review_count: "947",
+        },
+        {
+          "": "16",
+          position: "16",
+          release_name: "Revolver",
+          artist_name: "The Beatles",
+          release_date: "1966-08-05",
+          release_type: "album",
+          primary_genres: "Pop Rock, Psychedelic Pop",
+          secondary_genres: "Psychedelic Rock, Psychedelic Pop",
+          descriptors:
+            "psychedelic, melodic, malevocals, eclectic, drugs, playful, warm, quirky, happy, surreal",
+          avg_rating: "4.23",
+          rating_count: "45401",
+          review_count: "1169",
+        },
+        {
+          "": "17",
+          position: "17",
+          release_name: "good kid, m.A.A.d city",
+          artist_name: "Kendrick Lamar",
+          release_date: "2012-10-22",
+          release_type: "album",
+          primary_genres: "West Coast Hip Hop, Conscious Hip Hop",
+          secondary_genres: "Hardcore Hip Hop, Pop Rap, Trap",
+          descriptors:
+            "urban, crime, conceptalbum, conscious, introspective, malevocals, passionate, Christian, violence, bittersweet",
+          avg_rating: "4.22",
+          rating_count: "41799",
+          review_count: "317",
+        },
+        {
+          "": "18",
+          position: "18",
+          release_name:
+            "The Rise and Fall of Ziggy Stardust and the Spiders From Mars",
+          artist_name: "David Bowie",
+          release_date: "1972-06-16",
+          release_type: "album",
+          primary_genres: "Glam Rock, Pop Rock",
+          secondary_genres: "Art Rock, Rock Opera",
+          descriptors:
+            "sciencefiction, melodic, malevocals, anthemic, conceptalbum, passionate, rockopera, bittersweet, energetic, triumphant",
+          avg_rating: "4.26",
+          rating_count: "41613",
+          review_count: "729",
+        },
+        {
+          "": "19",
+          position: "19",
+          release_name: "Unknown Pleasures",
+          artist_name: "Joy Division",
+          release_date: "1979-06-15",
+          release_type: "album",
+          primary_genres: "Post-Punk",
+          secondary_genres: "Gothic Rock",
+          descriptors:
+            "sombre, dark, cold, anxious, introspective, lonely, atmospheric, depressive, existential, pessimistic",
+          avg_rating: "4.11",
+          rating_count: "41559",
+          review_count: "587",
+        },
+        {
+          "": "20",
+          position: "20",
+          release_name: "Yeezus",
+          artist_name: "Kanye West",
+          release_date: "2013-06-18",
+          release_type: "album",
+          primary_genres: "Experimental Hip Hop, Industrial Hip Hop",
+          secondary_genres:
+            "Industrial Hip Hop, Hardcore Hip Hop, Electro-Industrial",
+          descriptors:
+            "vulgar, aggressive, manic, boastful, sampling, noisy, angry, energetic, malevocals, sexual",
+          avg_rating: "3.78",
+          rating_count: "40229",
+          review_count: "389",
+        },
+        {
+          "": "21",
+          position: "21",
+          release_name: "Amnesiac",
+          artist_name: "Radiohead",
+          release_date: "2001-06-04",
+          release_type: "album",
+          primary_genres: "Art Rock, Experimental Rock",
+          secondary_genres: "Electronic, Jazz-Rock, Art Pop",
+          descriptors:
+            "anxious, sombre, melancholic, atmospheric, cryptic, abstract, mysterious, cold, malevocals, dark",
+          avg_rating: "3.79",
+          rating_count: "39826",
+          review_count: "549",
+        },
+        {
+          "": "22",
+          position: "22",
+          release_name: "The Money Store",
+          artist_name: "Death Grips",
+          release_date: "2012-04-24",
+          release_type: "album",
+          primary_genres:
+            "Industrial Hip Hop, Hardcore Hip Hop, Experimental Hip Hop",
+          secondary_genres: "Glitch Hop, Abstract Hip Hop",
+          descriptors:
+            "aggressive, manic, energetic, angry, noisy, nihilistic, drugs, raw, crime, sampling",
+          avg_rating: "4.04",
+          rating_count: "39195",
+          review_count: "339",
+        },
+        {
+          "": "23",
+          position: "23",
+          release_name: "Madvillainy",
+          artist_name: "Madvillain",
+          release_date: "2004-03-23",
+          release_type: "album",
+          primary_genres: "Abstract Hip Hop",
+          secondary_genres:
+            "Jazz Rap, Experimental Hip Hop, Instrumental Hip Hop",
+          descriptors:
+            "sampling, playful, humorous, cryptic, abstract, mysterious, eclectic, malevocals, surreal, boastful",
+          avg_rating: "4.28",
+          rating_count: "38684",
+          review_count: "397",
+        },
+        {
+          "": "24",
+          position: "24",
+          release_name: "Funeral",
+          artist_name: "Arcade Fire",
+          release_date: "2004-09-14",
+          release_type: "album",
+          primary_genres: "Indie Rock, Chamber Pop",
+          secondary_genres: "Art Pop, Post-Punk Revival",
+          descriptors:
+            "death, passionate, melancholic, melodic, bittersweet, autumn, uplifting, poetic, malevocals, conceptalbum",
+          avg_rating: "3.97",
+          rating_count: "38400",
+          review_count: "829",
+        },
+        {
+          "": "25",
+          position: "25",
+          release_name: "The Wall",
+          artist_name: "Pink Floyd",
+          release_date: "1979-11-30",
+          release_type: "album",
+          primary_genres: "Rock Opera, Art Rock",
+          secondary_genres: "Symphonic Rock, Progressive Rock",
+          descriptors:
+            "rockopera, misanthropic, lonely, conceptalbum, introspective, anxious, dark, epic, malevocals, alienation",
+          avg_rating: "3.81",
+          rating_count: "38350",
+          review_count: "752",
+        },
+        {
+          "": "26",
+          position: "26",
+          release_name: "Remain in Light",
+          artist_name: "Talking Heads",
+          release_date: "1980-10-08",
+          release_type: "album",
+          primary_genres: "New Wave, Post-Punk",
+          secondary_genres: "Funk, Afrobeat, Experimental Rock, Dance-Punk",
+          descriptors:
+            "rhythmic, anxious, energetic, malevocals, playful, cryptic, abstract, repetitive, quirky, philosophical",
+          avg_rating: "4.25",
+          rating_count: "38220",
+          review_count: "532",
+        },
+        {
+          "": "27",
+          position: "27",
+          release_name: "Animals",
+          artist_name: "Pink Floyd",
+          release_date: "1977-01-21",
+          release_type: "album",
+          primary_genres: "Progressive Rock, Art Rock",
+          secondary_genres: "Psychedelic Rock",
+          descriptors:
+            "political, pessimistic, philosophical, conceptalbum, sarcastic, progressive, satirical, malevocals, complex, atmospheric",
+          avg_rating: "4.14",
+          rating_count: "38195",
+          review_count: "704",
+        },
+        {
+          "": "28",
+          position: "28",
+          release_name: "The College Dropout",
+          artist_name: "Kanye West",
+          release_date: "2004-02-10",
+          release_type: "album",
+          primary_genres: "Chipmunk Soul, Pop Rap",
+          secondary_genres: "Conscious Hip Hop, Neo-Soul, Pop Rap",
+          descriptors:
+            "humorous, sampling, conscious, playful, malevocals, passionate, boastful, satirical, sarcastic, warm",
+          avg_rating: "4.05",
+          rating_count: "37886",
+          review_count: "283",
+        },
+        {
+          "": "29",
+          position: "29",
+          release_name: "Pet Sounds",
+          artist_name: "The Beach Boys",
+          release_date: "1966-05-16",
+          release_type: "album",
+          primary_genres: "Baroque Pop",
+          secondary_genres: "Sunshine Pop, Psychedelic Pop, Progressive Pop",
+          descriptors:
+            "Wallof Sound, bittersweet, warm, love, romantic, melodic, lush, melancholic, introspective, passionate",
+          avg_rating: "4.18",
+          rating_count: "37811",
+          review_count: "752",
+        },
+        {
+          "": "30",
+          position: "30",
+          release_name: "Paranoid",
+          artist_name: "Black Sabbath",
+          release_date: "1970-09-18",
+          release_type: "album",
+          primary_genres: "Heavy Metal, Hard Rock",
+          secondary_genres: "Traditional Doom Metal, Blues Rock",
+          descriptors:
+            "heavy, dark, war, political, ominous, malevocals, drugs, sciencefiction, pessimistic, alienation",
+          avg_rating: "4.2",
+          rating_count: "37641",
+          review_count: "593",
+        },
+        {
+          "": "31",
+          position: "31",
+          release_name: "The Beatles [White Album]",
+          artist_name: "The Beatles",
+          release_date: "1968-11-22",
+          release_type: "album",
+          primary_genres: "Pop Rock, Rock",
+          secondary_genres:
+            "Psychedelic Rock, Blues Rock, Art Rock, Hard Rock, Folk Rock",
+          descriptors:
+            "eclectic, melodic, playful, malevocals, quirky, introspective, energetic, love, rebellious, sarcastic",
+          avg_rating: "4.14",
+          rating_count: "37294",
+          review_count: "1094",
+        },
+        {
+          "": "32",
+          position: "32",
+          release_name: "The Queen Is Dead",
+          artist_name: "The Smiths",
+          release_date: "1986-06-16",
+          release_type: "album",
+          primary_genres: "Jangle Pop, Indie Pop",
+          secondary_genres: "Post-Punk",
+          descriptors:
+            "lonely, melancholic, sarcastic, melodic, poetic, bittersweet, introspective, malevocals, humorous, longing",
+          avg_rating: "4.13",
+          rating_count: "37221",
+          review_count: "542",
+        },
+        {
+          "": "33",
+          position: "33",
+          release_name: "Lift Yr. Skinny Fists Like Antennas to Heaven!",
+          artist_name: "Godspeed You Black Emperor!",
+          release_date: "2000-10-09",
+          release_type: "album",
+          primary_genres: "Post-Rock",
+          secondary_genres: "Field Recordings, Drone, Chamber Music, Ambient",
+          descriptors:
+            "instrumental, epic, melancholic, atmospheric, apocalyptic, suspenseful, suite, sampling, complex, hypnotic",
+          avg_rating: "4.18",
+          rating_count: "36772",
+          review_count: "625",
+        },
+        {
+          "": "34",
+          position: "34",
+          release_name: "Led Zeppelin [IV]",
+          artist_name: "Led Zeppelin",
+          release_date: "1971-11-08",
+          release_type: "album",
+          primary_genres: "Hard Rock",
+          secondary_genres: "Blues Rock, Folk Rock",
+          descriptors:
+            "fantasy, folklore, malevocals, energetic, passionate, rhythmic, rebellious, melodic, heavy, longing",
+          avg_rating: "4.11",
+          rating_count: "36316",
+          review_count: "868",
+        },
+        {
+          "": "35",
+          position: "35",
+          release_name: "Igor",
+          artist_name: "Tyler, the Creator",
+          release_date: "2019-05-17",
+          release_type: "album",
+          primary_genres: "Neo-Soul, Psychedelic Soul",
+          secondary_genres:
+            "Alternative R&B, Synth Funk, Neo-Psychedelia, Experimental Hip Hop, Pop Rap",
+          descriptors:
+            "LGBT, breakup, malevocals, love, conceptalbum, lush, sentimental, warm, longing, sampling",
+          avg_rating: "3.95",
+          rating_count: "35609",
+          review_count: "327",
+        },
+        {
+          "": "36",
+          position: "36",
+          release_name: "Doolittle",
+          artist_name: "Pixies",
+          release_date: "1989-04-17",
+          release_type: "album",
+          primary_genres: "Alternative Rock, Indie Rock",
+          secondary_genres: "Surf Rock, Noise Pop",
+          descriptors:
+            "energetic, anxious, playful, malevocals, manic, humorous, noisy, raw, rebellious, femalevocals",
+          avg_rating: "4.12",
+          rating_count: "35526",
+          review_count: "557",
+        },
+        {
+          "": "37",
+          position: "37",
+          release_name: "Hail to the Thief",
+          artist_name: "Radiohead",
+          release_date: "2003-06-09",
+          release_type: "album",
+          primary_genres: "Alternative Rock, Art Rock",
+          secondary_genres: "Electronic",
+          descriptors:
+            "political, eclectic, anxious, sombre, malevocals, cryptic, melancholic, conscious, alienation, complex",
+          avg_rating: "3.66",
+          rating_count: "35491",
+          review_count: "493",
+        },
+        {
+          "": "38",
+          position: "38",
+          release_name: "The Life of Pablo",
+          artist_name: "Kanye West",
+          release_date: "2016-02-14",
+          release_type: "album",
+          primary_genres: "Pop Rap, Hip Hop",
+          secondary_genres:
+            "Contemporary R&B, Trap, Experimental Hip Hop, Art Pop",
+          descriptors:
+            "boastful, vulgar, religious, sexual, sampling, manic, eclectic, passionate, malevocals, bittersweet",
+          avg_rating: "3.74",
+          rating_count: "35457",
+          review_count: "286",
+        },
+        {
+          "": "39",
+          position: "39",
+          release_name: "Rubber Soul",
+          artist_name: "The Beatles",
+          release_date: "1965-12-03",
+          release_type: "album",
+          primary_genres: "Pop Rock",
+          secondary_genres: "Folk Rock, Psychedelic Pop, Folk Pop",
+          descriptors:
+            "melodic, love, malevocals, romantic, bittersweet, mellow, autumn, melancholic, eclectic, happy",
+          avg_rating: "4.03",
+          rating_count: "35219",
+          review_count: "726",
+        },
+        {
+          "": "40",
+          position: "40",
+          release_name: "Spiderland",
+          artist_name: "Slint",
+          release_date: "1991-03-27",
+          release_type: "album",
+          primary_genres: "Post-Rock, Post-Hardcore, Math Rock",
+          secondary_genres: "Experimental Rock, Spoken Word, Slowcore",
+          descriptors:
+            "lonely, anxious, sombre, uncommontimesignatures, dark, suspenseful, atmospheric, melancholic, cryptic, ominous",
+          avg_rating: "4.15",
+          rating_count: "34933",
+          review_count: "457",
+        },
+        {
+          "": "41",
+          position: "41",
+          release_name: "In utero",
+          artist_name: "Nirvana",
+          release_date: "1993-09-21",
+          release_type: "album",
+          primary_genres: "Grunge",
+          secondary_genres: "Noise Rock, Post-Hardcore",
+          descriptors:
+            "noisy, raw, sarcastic, pessimistic, angry, rebellious, anxious, malevocals, dissonant, introspective",
+          avg_rating: "3.98",
+          rating_count: "34762",
+          review_count: "537",
+        },
+        {
+          "": "42",
+          position: "42",
+          release_name: "Late Registration",
+          artist_name: "Kanye West",
+          release_date: "2005-08-30",
+          release_type: "album",
+          primary_genres: "Hip Hop, Pop Rap",
+          secondary_genres: "Conscious Hip Hop, Neo-Soul, Pop Rap, Jazz Rap",
+          descriptors:
+            "sampling, humorous, malevocals, warm, passionate, lush, conscious, uplifting, introspective, energetic",
+          avg_rating: "3.99",
+          rating_count: "33668",
+          review_count: "236",
+        },
+        {
+          "": "43",
+          position: "43",
+          release_name: "Is This It",
+          artist_name: "The Strokes",
+          release_date: "2001-08-20",
+          release_type: "album",
+          primary_genres: "Garage Rock Revival, Indie Rock",
+          secondary_genres: "Post-Punk Revival",
+          descriptors:
+            "energetic, malevocals, melodic, urban, apathetic, rebellious, bittersweet, rhythmic, raw, love",
+          avg_rating: "3.93",
+          rating_count: "33526",
+          review_count: "529",
+        },
+        {
+          "": "44",
+          position: "44",
+          release_name: "Graduation",
+          artist_name: "Kanye West",
+          release_date: "2007-09-11",
+          release_type: "album",
+          primary_genres: "Pop Rap",
+          secondary_genres: "Electropop",
+          descriptors:
+            "triumphant, boastful, uplifting, anthemic, malevocals, optimistic, sampling, energetic, happy, melodic",
+          avg_rating: "3.6",
+          rating_count: "32966",
+          review_count: "256",
+        },
+        {
+          "": "45",
+          position: "45",
+          release_name: "Illmatic",
+          artist_name: "Nas",
+          release_date: "1994-04-19",
+          release_type: "album",
+          primary_genres: "East Coast Hip Hop, Boom Bap, Hardcore Hip Hop",
+          secondary_genres: "Conscious Hip Hop, Jazz Rap",
+          descriptors:
+            "urban, crime, introspective, sampling, drugs, rhythmic, conscious, philosophical, malevocals, boastful",
+          avg_rating: "4.21",
+          rating_count: "32875",
+          review_count: "624",
+        },
+        {
+          "": "46",
+          position: "46",
+          release_name: "Blonde",
+          artist_name: "Frank Ocean",
+          release_date: "2016-08-20",
+          release_type: "album",
+          primary_genres: "Alternative R&B, Art Pop, Neo-Soul",
+          secondary_genres: "Ambient Pop, Singer-Songwriter, Alt-Pop",
+          descriptors:
+            "introspective, LGBT, bittersweet, mellow, sexual, atmospheric, drugs, sensual, malevocals, romantic",
+          avg_rating: "4.06",
+          rating_count: "32696",
+          review_count: "312",
+        },
+        {
+          "": "47",
+          position: "47",
+          release_name: "Damn.",
+          artist_name: "Kendrick Lamar",
+          release_date: "2017-04-14",
+          release_type: "album",
+          primary_genres: "West Coast Hip Hop, Conscious Hip Hop",
+          secondary_genres:
+            "Trap, Pop Rap, Political Hip Hop, Contemporary R&B",
+          descriptors:
+            "introspective, conscious, malevocals, rhythmic, death, sampling, urban, passionate, existential, serious",
+          avg_rating: "3.54",
+          rating_count: "32407",
+          review_count: "238",
+        },
+        {
+          "": "48",
+          position: "48",
+          release_name: "Flower Boy",
+          artist_name: "Tyler, the Creator",
+          release_date: "2017-07-21",
+          release_type: "album",
+          primary_genres: "West Coast Hip Hop",
+          secondary_genres:
+            "Neo-Soul, Synth Funk, Alternative R&B, Pop Rap, Neo-Psychedelia",
+          descriptors:
+            "introspective, lonely, lush, LGBT, warm, malevocals, love, longing, summer, bittersweet",
+          avg_rating: "3.9",
+          rating_count: "32203",
+          review_count: "215",
+        },
+        {
+          "": "49",
+          position: "49",
+          release_name: "The Doors",
+          artist_name: "The Doors",
+          release_date: "1967-01-04",
+          release_type: "album",
+          primary_genres: "Psychedelic Rock",
+          secondary_genres: "Blues Rock, Acid Rock",
+          descriptors:
+            "psychedelic, drugs, poetic, dark, sexual, malevocals, cryptic, hedonistic, mysterious, nocturnal",
+          avg_rating: "4.09",
+          rating_count: "32083",
+          review_count: "569",
+        },
+        {
+          "": "50",
+          position: "50",
+          release_name: "Master of Puppets",
+          artist_name: "Metallica",
+          release_date: "1986-03-03",
+          release_type: "album",
+          primary_genres: "Thrash Metal",
+          secondary_genres: "NA",
+          descriptors:
+            "aggressive, heavy, angry, energetic, malevocals, rebellious, political, serious, uncommontimesignatures, progressive",
+          avg_rating: "4.01",
+          rating_count: "32027",
+          review_count: "735",
+        },
+        {
+          "": "51",
+          position: "51",
+          release_name: "KIDS SEE GHOSTS",
+          artist_name: "Kids See Ghosts",
+          release_date: "2018-06-08",
+          release_type: "album",
+          primary_genres: "Pop Rap, Experimental Hip Hop, Neo-Psychedelia",
+          secondary_genres: "Art Pop, Neo-Psychedelia, Alternative R&B",
+          descriptors:
+            "malevocals, spiritual, psychedelic, uplifting, sampling, introspective, passionate, eclectic, bittersweet, atmospheric",
+          avg_rating: "3.85",
+          rating_count: "31839",
+          review_count: "226",
+        },
+        {
+          "": "52",
+          position: "52",
+          release_name: "Dummy",
+          artist_name: "Portishead",
+          release_date: "1994-08-22",
+          release_type: "album",
+          primary_genres: "Trip Hop",
+          secondary_genres: "Acid Jazz, Dark Jazz",
+          descriptors:
+            "melancholic, mysterious, atmospheric, dark, nocturnal, mellow, introspective, sampling, femalevocals, sombre",
+          avg_rating: "4.12",
+          rating_count: "31826",
+          review_count: "415",
+        },
+        {
+          "": "53",
+          position: "53",
+          release_name: "Kind of Blue",
+          artist_name: "Miles Davis",
+          release_date: "1959-08-17",
+          release_type: "album",
+          primary_genres: "Modal Jazz, Cool Jazz",
+          secondary_genres: "NA",
+          descriptors:
+            "instrumental, mellow, improvisation, nocturnal, soothing, calm, acoustic, meditative",
+          avg_rating: "4.23",
+          rating_count: "31262",
+          review_count: "556",
+        },
+        {
+          "": "54",
+          position: "54",
+          release_name: "Pink Moon",
+          artist_name: "Nick Drake",
+          release_date: "1972-02-25",
+          release_type: "album",
+          primary_genres: "Contemporary Folk, Singer-Songwriter",
+          secondary_genres: "Folk Baroque",
+          descriptors:
+            "acoustic, melancholic, lonely, mellow, introspective, poetic, calm, malevocals, autumn, soft",
+          avg_rating: "4.18",
+          rating_count: "31206",
+          review_count: "553",
+        },
+        {
+          "": "55",
+          position: "55",
+          release_name: "A Moon Shaped Pool",
+          artist_name: "Radiohead",
+          release_date: "2016-05-08",
+          release_type: "album",
+          primary_genres: "Art Pop, Art Rock, Chamber Pop",
+          secondary_genres: "Ambient Pop, Electronic",
+          descriptors:
+            "atmospheric, melancholic, introspective, sombre, lush, mellow, malevocals, mysterious, soft, sad",
+          avg_rating: "3.9",
+          rating_count: "31081",
+          review_count: "276",
+        },
+        {
+          "": "56",
+          position: "56",
+          release_name: "Disintegration",
+          artist_name: "The Cure",
+          release_date: "1989-05-02",
+          release_type: "album",
+          primary_genres: "Gothic Rock, Post-Punk",
+          secondary_genres: "Dream Pop",
+          descriptors:
+            "melancholic, romantic, ethereal, atmospheric, nocturnal, sad, bittersweet, love, introspective, malevocals",
+          avg_rating: "4.18",
+          rating_count: "31077",
+          review_count: "425",
+        },
+        {
+          "": "57",
+          position: "57",
+          release_name: "808s & Heartbreak",
+          artist_name: "Kanye West",
+          release_date: "2008-11-24",
+          release_type: "album",
+          primary_genres: "Electropop, Synthpop",
+          secondary_genres: "Pop Rap, Alternative R&B, Art Pop",
+          descriptors:
+            "cold, lonely, breakup, malevocals, introspective, melancholic, sad, love, winter, sombre",
+          avg_rating: "3.57",
+          rating_count: "30954",
+          review_count: "235",
+        },
+        {
+          "": "58",
+          position: "58",
+          release_name: "Weezer [Blue Album]",
+          artist_name: "Weezer",
+          release_date: "1994-05-10",
+          release_type: "album",
+          primary_genres: "Power Pop, Alternative Rock",
+          secondary_genres: "Pop Punk",
+          descriptors:
+            "melodic, energetic, malevocals, bittersweet, summer, passionate, playful, lonely, introspective, alienation",
+          avg_rating: "3.89",
+          rating_count: "30756",
+          review_count: "497",
+        },
+        {
+          "": "59",
+          position: "59",
+          release_name: "Souvlaki",
+          artist_name: "Slowdive",
+          release_date: "1993-06-01",
+          release_type: "album",
+          primary_genres: "Dream Pop, Shoegaze",
+          secondary_genres: "Space Rock Revival, Neo-Psychedelia",
+          descriptors:
+            "melancholic, ethereal, mellow, romantic, atmospheric, femalevocals, soothing, malevocals, sentimental, lush",
+          avg_rating: "4.1",
+          rating_count: "30706",
+          review_count: "310",
+        },
+        {
+          "": "60",
+          position: "60",
+          release_name: "Low",
+          artist_name: "David Bowie",
+          release_date: "1977-01-14",
+          release_type: "album",
+          primary_genres: "Art Rock",
+          secondary_genres: "Ambient, Electronic, Art Pop, Krautrock",
+          descriptors:
+            "atmospheric, lonely, futuristic, sombre, melancholic, abstract, cryptic, malevocals, surreal, cold",
+          avg_rating: "4.13",
+          rating_count: "30533",
+          review_count: "524",
+        },
+        {
+          "": "61",
+          position: "61",
+          release_name: "ye",
+          artist_name: "Kanye West",
+          release_date: "2018-06-01",
+          release_type: "album",
+          primary_genres: "Pop Rap",
+          secondary_genres:
+            "Contemporary R&B, Neo-Soul, Art Pop, Experimental Hip Hop",
+          descriptors:
+            "introspective, malevocals, love, sampling, existential, bittersweet, passionate, sentimental, melancholic, rhythmic",
+          avg_rating: "3.29",
+          rating_count: "30340",
+          review_count: "269",
+        },
+        {
+          "": "62",
+          position: "62",
+          release_name: "Closer",
+          artist_name: "Joy Division",
+          release_date: "1980-07-18",
+          release_type: "album",
+          primary_genres: "Post-Punk",
+          secondary_genres: "Gothic Rock, Coldwave",
+          descriptors:
+            "lonely, sombre, cold, depressive, dark, introspective, atmospheric, anxious, existential, pessimistic",
+          avg_rating: "4.09",
+          rating_count: "30025",
+          review_count: "563",
+        },
+        {
+          "": "63",
+          position: "63",
+          release_name: "Selected Ambient Works 85-92",
+          artist_name: "Aphex Twin",
+          release_date: "1992-11-09",
+          release_type: "album",
+          primary_genres: "Ambient Techno, IDM",
+          secondary_genres: "Ambient",
+          descriptors:
+            "atmospheric, ethereal, futuristic, instrumental, hypnotic, soothing, mellow, rhythmic, calm, repetitive",
+          avg_rating: "4.04",
+          rating_count: "29868",
+          review_count: "309",
+        },
+        {
+          "": "64",
+          position: "64",
+          release_name: "London Calling",
+          artist_name: "The Clash",
+          release_date: "1979-12-14",
+          release_type: "album",
+          primary_genres: "New Wave, Punk Rock",
+          secondary_genres: "Ska, Reggae, Rockabilly",
+          descriptors:
+            "political, energetic, rebellious, eclectic, malevocals, rhythmic, passionate, conscious, urban, anthemic",
+          avg_rating: "4.01",
+          rating_count: "29686",
+          review_count: "757",
+        },
+        {
+          "": "65",
+          position: "65",
+          release_name: "The Piper at the Gates of Dawn",
+          artist_name: "Pink Floyd",
+          release_date: "1967-08-04",
+          release_type: "album",
+          primary_genres: "Psychedelic Rock, Psychedelic Pop",
+          secondary_genres: "Space Rock, Experimental Rock",
+          descriptors:
+            "psychedelic, drugs, fantasy, surreal, playful, abstract, quirky, malevocals, avant-garde, cryptic",
+          avg_rating: "3.85",
+          rating_count: "29582",
+          review_count: "701",
+        },
+        {
+          "": "66",
+          position: "66",
+          release_name: "Homogenic",
+          artist_name: "Björk",
+          release_date: "1997-09-22",
+          release_type: "album",
+          primary_genres: "Art Pop, Electronic",
+          secondary_genres: "Trip Hop, IDM, Chamber Pop",
+          descriptors:
+            "cold, passionate, femalevocals, ethereal, lush, atmospheric, introspective, anxious, winter, romantic",
+          avg_rating: "4.08",
+          rating_count: "29306",
+          review_count: "317",
+        },
+        {
+          "": "67",
+          position: "67",
+          release_name: "Led Zeppelin",
+          artist_name: "Led Zeppelin",
+          release_date: "1969-01-12",
+          release_type: "album",
+          primary_genres: "Hard Rock, Blues Rock",
+          secondary_genres: "NA",
+          descriptors:
+            "energetic, heavy, malevocals, raw, sexual, passionate, rebellious, hedonistic, boastful, rhythmic",
+          avg_rating: "3.95",
+          rating_count: "29279",
+          review_count: "586",
+        },
+        {
+          "": "68",
+          position: "68",
+          release_name: "Daydream Nation",
+          artist_name: "Sonic Youth",
+          release_date: "1988-10-18",
+          release_type: "album",
+          primary_genres: "Noise Rock, Alternative Rock",
+          secondary_genres: "Post-Punk, Experimental Rock",
+          descriptors:
+            "energetic, anxious, raw, rebellious, noisy, urban, malevocals, femalevocals, dissonant, apathetic",
+          avg_rating: "4.05",
+          rating_count: "29146",
+          review_count: "501",
+        },
+        {
+          "": "69",
+          position: "69",
+          release_name: "Enter the Wu-Tang (36 Chambers)",
+          artist_name: "Wu-Tang Clan",
+          release_date: "1993-11-09",
+          release_type: "album",
+          primary_genres: "East Coast Hip Hop, Boom Bap, Hardcore Hip Hop",
+          secondary_genres: "NA",
+          descriptors:
+            "urban, aggressive, raw, crime, boastful, rhythmic, energetic, violence, dark, sampling",
+          avg_rating: "4.2",
+          rating_count: "29050",
+          review_count: "421",
+        },
+        {
+          "": "70",
+          position: "70",
+          release_name: "Meddle",
+          artist_name: "Pink Floyd",
+          release_date: "1971-11-05",
+          release_type: "album",
+          primary_genres: "Progressive Rock",
+          secondary_genres: "Space Rock, Psychedelic Rock, Folk Rock",
+          descriptors:
+            "mellow, psychedelic, atmospheric, progressive, mysterious, malevocals, hypnotic, calm, surreal, epic",
+          avg_rating: "3.97",
+          rating_count: "29047",
+          review_count: "531",
+        },
+        {
+          "": "71",
+          position: "71",
+          release_name: "Hunky Dory",
+          artist_name: "David Bowie",
+          release_date: "1971-12-17",
+          release_type: "album",
+          primary_genres: "Pop Rock, Glam Rock, Art Rock",
+          secondary_genres:
+            "Singer-Songwriter, Piano Rock, Art Pop, Baroque Pop",
+          descriptors:
+            "playful, melodic, quirky, malevocals, warm, lush, melancholic, sarcastic, introspective, humorous",
+          avg_rating: "4.03",
+          rating_count: "28974",
+          review_count: "521",
+        },
+        {
+          "": "72",
+          position: "72",
+          release_name: "Ride the Lightning",
+          artist_name: "Metallica",
+          release_date: "1984-07-30",
+          release_type: "album",
+          primary_genres: "Thrash Metal",
+          secondary_genres: "NA",
+          descriptors:
+            "heavy, energetic, aggressive, malevocals, death, dark, angry, apocalyptic, melodic, progressive",
+          avg_rating: "4.06",
+          rating_count: "28946",
+          review_count: "548",
+        },
+        {
+          "": "73",
+          position: "73",
+          release_name: "Merriweather Post Pavilion",
+          artist_name: "Animal Collective",
+          release_date: "2009-01-20",
+          release_type: "album",
+          primary_genres: "Psychedelic Pop, Neo-Psychedelia, Indietronica",
+          secondary_genres: "Electronic, Art Pop, Sunshine Pop",
+          descriptors:
+            "psychedelic, summer, dense, warm, uplifting, happy, hypnotic, playful, melodic, malevocals",
+          avg_rating: "3.73",
+          rating_count: "28861",
+          review_count: "642",
+        },
+        {
+          "": "74",
+          position: "74",
+          release_name: "Magical Mystery Tour",
+          artist_name: "The Beatles",
+          release_date: "1967-11-27",
+          release_type: "album",
+          primary_genres: "Psychedelic Pop, Pop Rock",
+          secondary_genres:
+            "Psychedelic Rock, Sunshine Pop, Art Rock, Art Pop, Baroque Pop",
+          descriptors:
+            "psychedelic, melodic, playful, surreal, malevocals, lush, summer, quirky, love, uplifting",
+          avg_rating: "4.06",
+          rating_count: "28754",
+          review_count: "564",
+        },
+        {
+          "": "75",
+          position: "75",
+          release_name: "Pablo Honey",
+          artist_name: "Radiohead",
+          release_date: "1993-04-20",
+          release_type: "album",
+          primary_genres: "Alternative Rock",
+          secondary_genres: "Britpop, Grunge",
+          descriptors:
+            "lonely, melancholic, anxious, energetic, malevocals, introspective, self-hatred, sarcastic, noisy, alienation",
+          avg_rating: "2.71",
+          rating_count: "28599",
+          review_count: "496",
+        },
+        {
+          "": "76",
+          position: "76",
+          release_name: "Illinois",
+          artist_name: "Sufjan Stevens",
+          release_date: "2005-07-05",
+          release_type: "album",
+          primary_genres: "Chamber Pop, Singer-Songwriter",
+          secondary_genres:
+            "Chamber Folk, Americana, Progressive Pop, Folk Pop, Indie Folk",
+          descriptors:
+            "lush, melodic, conceptalbum, Christian, malevocals, warm, bittersweet, history, poetic, sentimental",
+          avg_rating: "4.08",
+          rating_count: "28592",
+          review_count: "408",
+        },
+        {
+          "": "77",
+          position: "77",
+          release_name: "Endtroducing.....",
+          artist_name: "DJ Shadow",
+          release_date: "1996-11-19",
+          release_type: "album",
+          primary_genres:
+            "Instrumental Hip Hop, Experimental Hip Hop, Plunderphonics",
+          secondary_genres: "Trip Hop, Turntablism",
+          descriptors:
+            "sampling, instrumental, atmospheric, urban, mysterious, nocturnal, rhythmic, sombre, hypnotic, eclectic",
+          avg_rating: "4.12",
+          rating_count: "28269",
+          review_count: "415",
+        },
+        {
+          "": "78",
+          position: "78",
+          release_name: "F♯A♯∞",
+          artist_name: "Godspeed You Black Emperor!",
+          release_date: "1997-08-14",
+          release_type: "album",
+          primary_genres: "Post-Rock",
+          secondary_genres: "Field Recordings, Spoken Word, Ambient, Drone",
+          descriptors:
+            "apocalyptic, instrumental, atmospheric, dark, sombre, ominous, epic, lonely, suspenseful, melancholic",
+          avg_rating: "4.13",
+          rating_count: "28098",
+          review_count: "368",
+        },
+        {
+          "": "79",
+          position: "79",
+          release_name: "Discovery",
+          artist_name: "Daft Punk",
+          release_date: "2001-03-13",
+          release_type: "album",
+          primary_genres: "French House",
+          secondary_genres: "Electro-Disco, Dance-Pop, Funky House, Synth Funk",
+          descriptors:
+            "energetic, futuristic, party, sampling, playful, rhythmic, happy, repetitive, malevocals, uplifting",
+          avg_rating: "3.97",
+          rating_count: "27951",
+          review_count: "296",
+        },
+        {
+          "": "80",
+          position: "80",
+          release_name: "Turn On the Bright Lights",
+          artist_name: "Interpol",
+          release_date: "2002-08-20",
+          release_type: "album",
+          primary_genres: "Post-Punk Revival",
+          secondary_genres: "Post-Rock",
+          descriptors:
+            "urban, melancholic, atmospheric, anxious, nocturnal, introspective, dark, malevocals, cold, rhythmic",
+          avg_rating: "3.95",
+          rating_count: "27904",
+          review_count: "433",
+        },
+        {
+          "": "81",
+          position: "81",
+          release_name: "Ágætis byrjun",
+          artist_name: "Sigur Rós",
+          release_date: "1999-06-12",
+          release_type: "album",
+          primary_genres: "Post-Rock",
+          secondary_genres: "Dream Pop, Ambient",
+          descriptors:
+            "ethereal, atmospheric, soothing, mellow, melancholic, winter, calm, lush, bittersweet, androgynousvocals",
+          avg_rating: "4.04",
+          rating_count: "27797",
+          review_count: "503",
+        },
+        {
+          "": "82",
+          position: "82",
+          release_name: "Demon Days",
+          artist_name: "Gorillaz",
+          release_date: "2005-05-24",
+          release_type: "album",
+          primary_genres: "Art Pop",
+          secondary_genres:
+            "Hip Hop, Alternative Rock, Electronic, Alternative Dance, Trip Hop",
+          descriptors:
+            "eclectic, melancholic, malevocals, lonely, political, urban, conscious, cryptic, sombre, conceptalbum",
+          avg_rating: "3.81",
+          rating_count: "27704",
+          review_count: "245",
+        },
+        {
+          "": "83",
+          position: "83",
+          release_name: "Atrocity Exhibition",
+          artist_name: "Danny Brown",
+          release_date: "2016-09-30",
+          release_type: "album",
+          primary_genres: "Experimental Hip Hop, Hardcore Hip Hop",
+          secondary_genres: "Abstract Hip Hop, Industrial Hip Hop, Post-Punk",
+          descriptors:
+            "drugs, dark, manic, abstract, malevocals, psychedelic, chaotic, eclectic, sexual, boastful",
+          avg_rating: "4.1",
+          rating_count: "27315",
+          review_count: "193",
+        },
+        {
+          "": "84",
+          position: "84",
+          release_name: "Highway 61 Revisited",
+          artist_name: "Bob Dylan",
+          release_date: "1965-08-30",
+          release_type: "album",
+          primary_genres: "Folk Rock, Singer-Songwriter",
+          secondary_genres: "Blues Rock, Contemporary Folk",
+          descriptors:
+            "poetic, cryptic, surreal, sarcastic, malevocals, passionate, conscious, rebellious, introspective, philosophical",
+          avg_rating: "4.17",
+          rating_count: "27271",
+          review_count: "606",
+        },
+        {
+          "": "85",
+          position: "85",
+          release_name: "Led Zeppelin II",
+          artist_name: "Led Zeppelin",
+          release_date: "1969-10-22",
+          release_type: "album",
+          primary_genres: "Hard Rock, Blues Rock",
+          secondary_genres: "NA",
+          descriptors:
+            "energetic, sexual, heavy, malevocals, raw, hedonistic, boastful, passionate, rebellious, rhythmic",
+          avg_rating: "3.93",
+          rating_count: "27262",
+          review_count: "580",
+        },
+        {
+          "": "86",
+          position: "86",
+          release_name: "★ [Blackstar]",
+          artist_name: "David Bowie",
+          release_date: "2016-01-08",
+          release_type: "album",
+          primary_genres: "Art Rock",
+          secondary_genres: "Jazz-Rock, Experimental Rock, Electronic",
+          descriptors:
+            "dark, death, introspective, poetic, malevocals, melancholic, conceptalbum, funereal, sad, existential",
+          avg_rating: "4.08",
+          rating_count: "26920",
+          review_count: "310",
+        },
+        {
+          "": "87",
+          position: "87",
+          release_name: "Marquee Moon",
+          artist_name: "Television",
+          release_date: "1977-02-08",
+          release_type: "album",
+          primary_genres: "Art Punk, Art Rock",
+          secondary_genres: "Post-Punk",
+          descriptors:
+            "malevocals, rhythmic, poetic, cryptic, technical, introspective, philosophical, anxious, existential, urban",
+          avg_rating: "4.13",
+          rating_count: "26791",
+          review_count: "397",
+        },
+        {
+          "": "88",
+          position: "88",
+          release_name: "A Love Supreme",
+          artist_name: "John Coltrane",
+          release_date: "1965-02-01",
+          release_type: "album",
+          primary_genres: "Spiritual Jazz",
+          secondary_genres: "Modal Jazz, Post-Bop",
+          descriptors:
+            "improvisation, passionate, spiritual, instrumental, complex, suite, acoustic, meditative, avant-garde, religious",
+          avg_rating: "4.3",
+          rating_count: "26404",
+          review_count: "441",
+        },
+        {
+          "": "89",
+          position: "89",
+          release_name: "channel ORANGE",
+          artist_name: "Frank Ocean",
+          release_date: "2012-07-10",
+          release_type: "album",
+          primary_genres: "Alternative R&B, Contemporary R&B",
+          secondary_genres: "Neo-Soul, Psychedelic Soul",
+          descriptors:
+            "romantic, summer, lonely, warm, sexual, LGBT, bittersweet, introspective, malevocals, sensual",
+          avg_rating: "3.81",
+          rating_count: "26185",
+          review_count: "189",
+        },
+        {
+          "": "90",
+          position: "90",
+          release_name: "Black Sabbath",
+          artist_name: "Black Sabbath",
+          release_date: "1970-02-13",
+          release_type: "album",
+          primary_genres: "Heavy Metal, Hard Rock",
+          secondary_genres: "Blues Rock, Traditional Doom Metal",
+          descriptors:
+            "occult, dark, ominous, sombre, fantasy, malevocals, heavy, psychedelic, funereal, suspenseful",
+          avg_rating: "4.06",
+          rating_count: "26137",
+          review_count: "568",
+        },
+        {
+          "": "91",
+          position: "91",
+          release_name: "The Glow Pt. 2",
+          artist_name: "The Microphones",
+          release_date: "2001-09-11",
+          release_type: "album",
+          primary_genres: "Indie Folk, Psychedelic Folk, Lo-Fi/Slacker Rock",
+          secondary_genres: "Noise Rock, Avant-Folk, Singer-Songwriter",
+          descriptors:
+            "lonely, melancholic, lo-fi, nature, introspective, forest, malevocals, atmospheric, noisy, existential",
+          avg_rating: "4.12",
+          rating_count: "25795",
+          review_count: "254",
+        },
+        {
+          "": "92",
+          position: "92",
+          release_name: "The Low End Theory",
+          artist_name: "A Tribe Called Quest",
+          release_date: "1991-09-24",
+          release_type: "album",
+          primary_genres: "Jazz Rap, East Coast Hip Hop, Conscious Hip Hop",
+          secondary_genres: "Boom Bap",
+          descriptors:
+            "rhythmic, urban, mellow, sampling, malevocals, conscious, boastful, playful, poetic, nocturnal",
+          avg_rating: "4.12",
+          rating_count: "25658",
+          review_count: "293",
+        },
+        {
+          "": "93",
+          position: "93",
+          release_name: "Master of Reality",
+          artist_name: "Black Sabbath",
+          release_date: "1971-07-21",
+          release_type: "album",
+          primary_genres: "Heavy Metal",
+          secondary_genres: "Traditional Doom Metal, Doom Metal",
+          descriptors:
+            "heavy, dark, malevocals, sombre, rhythmic, nocturnal, drugs, alienation, ominous, anthemic",
+          avg_rating: "4.12",
+          rating_count: "25391",
+          review_count: "453",
+        },
+        {
+          "": "94",
+          position: "94",
+          release_name: "White Light / White Heat",
+          artist_name: "The Velvet Underground",
+          release_date: "1968-01-30",
+          release_type: "album",
+          primary_genres: "Experimental Rock, Noise Rock, Proto-Punk",
+          secondary_genres: "Garage Rock, Spoken Word, Psychedelic Rock",
+          descriptors:
+            "drugs, noisy, sexual, raw, dissonant, lo-fi, chaotic, malevocals, energetic, hedonistic",
+          avg_rating: "4.03",
+          rating_count: "25347",
+          review_count: "520",
+        },
+        {
+          "": "95",
+          position: "95",
+          release_name: "The King of Limbs",
+          artist_name: "Radiohead",
+          release_date: "2011-02-18",
+          release_type: "album",
+          primary_genres: "Electronic, Experimental Rock",
+          secondary_genres: "Glitch Pop, IDM",
+          descriptors:
+            "hypnotic, atmospheric, nature, abstract, mysterious, forest, mellow, melancholic, rhythmic, malevocals",
+          avg_rating: "3.25",
+          rating_count: "25256",
+          review_count: "485",
+        },
+        {
+          "": "96",
+          position: "96",
+          release_name: "Mezzanine",
+          artist_name: "Massive Attack",
+          release_date: "1998-04-20",
+          release_type: "album",
+          primary_genres: "Trip Hop",
+          secondary_genres: "Dub, Post-Industrial",
+          descriptors:
+            "dark, nocturnal, mysterious, atmospheric, urban, anxious, hypnotic, melancholic, suspenseful, femalevocals",
+          avg_rating: "4.04",
+          rating_count: "25229",
+          review_count: "341",
+        },
+        {
+          "": "97",
+          position: "97",
+          release_name: "Pinkerton",
+          artist_name: "Weezer",
+          release_date: "1996-09-24",
+          release_type: "album",
+          primary_genres: "Alternative Rock, Power Pop",
+          secondary_genres: "Emo, Noise Pop",
+          descriptors:
+            "lonely, love, anxious, malevocals, raw, passionate, longing, self-hatred, sad, noisy",
+          avg_rating: "3.82",
+          rating_count: "25208",
+          review_count: "431",
+        },
+        {
+          "": "98",
+          position: "98",
+          release_name: "Surfer Rosa",
+          artist_name: "Pixies",
+          release_date: "1988-03-21",
+          release_type: "album",
+          primary_genres: "Indie Rock, Alternative Rock",
+          secondary_genres: "Noise Rock, Post-Hardcore",
+          descriptors:
+            "energetic, raw, humorous, playful, noisy, malevocals, femalevocals, chaotic, manic, anxious",
+          avg_rating: "3.94",
+          rating_count: "25187",
+          review_count: "368",
+        },
+        {
+          "": "99",
+          position: "99",
+          release_name: "Post",
+          artist_name: "Björk",
+          release_date: "1995-06-15",
+          release_type: "album",
+          primary_genres: "Art Pop, Electronic",
+          secondary_genres: "Trip Hop, Alternative Dance, Tribal House",
+          descriptors:
+            "eclectic, playful, passionate, femalevocals, quirky, futuristic, lush, melodic, romantic, abstract",
+          avg_rating: "3.92",
+          rating_count: "25128",
+          review_count: "238",
+        },
+        {
+          "": "100",
+          position: "100",
+          release_name: "Vespertine",
+          artist_name: "Björk",
+          release_date: "2001-08-27",
+          release_type: "album",
+          primary_genres: "Art Pop, Electronic",
+          secondary_genres: "Ambient Pop, Glitch Pop, Microsound",
+          descriptors:
+            "sensual, romantic, sexual, winter, ethereal, atmospheric, lush, femalevocals, introspective, soothing",
+          avg_rating: "4.15",
+          rating_count: "25068",
+          review_count: "271",
+        },
+        {
+          "": "101",
+          position: "101",
+          release_name: "Red",
+          artist_name: "King Crimson",
+          release_date: "1974-10-06",
+          release_type: "album",
+          primary_genres: "Progressive Rock, Art Rock",
+          secondary_genres: "Jazz-Rock, Hard Rock, Free Improvisation",
+          descriptors:
+            "dark, anxious, heavy, technical, ominous, complex, uncommontimesignatures, progressive, malevocals, nocturnal",
+          avg_rating: "4.22",
+          rating_count: "24763",
+          review_count: "416",
+        },
+        {
+          "": "102",
+          position: "102",
+          release_name: "Deathconsciousness",
+          artist_name: "Have a Nice Life",
+          release_date: "2008-01-24",
+          release_type: "album",
+          primary_genres: "Post-Punk, Shoegaze",
+          secondary_genres:
+            "Drone, Post-Rock, Post-Industrial, Gothic Rock, Lo-Fi/Slacker Rock",
+          descriptors:
+            "depressive, dark, atmospheric, sombre, suicide, lo-fi, misanthropic, death, nihilistic, existential",
+          avg_rating: "4.03",
+          rating_count: "24531",
+          review_count: "279",
+        },
+        {
+          "": "103",
+          position: "103",
+          release_name: "Hounds of Love",
+          artist_name: "Kate Bush",
+          release_date: "1985-09-16",
+          release_type: "album",
+          primary_genres: "Art Pop, Progressive Pop",
+          secondary_genres: "Synthpop, Baroque Pop",
+          descriptors:
+            "femalevocals, passionate, love, lush, romantic, ethereal, conceptalbum, poetic, epic, melodic",
+          avg_rating: "4.15",
+          rating_count: "24370",
+          review_count: "277",
+        },
+        {
+          "": "104",
+          position: "104",
+          release_name: "Heaven or Las Vegas",
+          artist_name: "Cocteau Twins",
+          release_date: "1990-09-17",
+          release_type: "album",
+          primary_genres: "Dream Pop",
+          secondary_genres: "Ethereal Wave, Shoegaze",
+          descriptors:
+            "ethereal, atmospheric, femalevocals, warm, soothing, lush, romantic, cryptic, sensual, mellow",
+          avg_rating: "4.09",
+          rating_count: "24284",
+          review_count: "211",
+        },
+        {
+          "": "105",
+          position: "105",
+          release_name: "Are You Experienced",
+          artist_name: "The Jimi Hendrix Experience",
+          release_date: "1967-05-12",
+          release_type: "album",
+          primary_genres: "Blues Rock, Psychedelic Rock, Acid Rock",
+          secondary_genres: "Hard Rock",
+          descriptors:
+            "energetic, psychedelic, sexual, drugs, raw, malevocals, hedonistic, heavy, hypnotic, passionate",
+          avg_rating: "4.12",
+          rating_count: "24260",
+          review_count: "516",
+        },
+        {
+          "": "106",
+          position: "106",
+          release_name: "The Downward Spiral",
+          artist_name: "Nine Inch Nails",
+          release_date: "1994-03-08",
+          release_type: "album",
+          primary_genres: "Industrial Rock",
+          secondary_genres: "Industrial Metal, Electro-Industrial, Art Rock",
+          descriptors:
+            "misanthropic, suicide, angry, dark, nihilistic, depressive, self-hatred, conceptalbum, aggressive, sexual",
+          avg_rating: "4.03",
+          rating_count: "24213",
+          review_count: "422",
+        },
+        {
+          "": "107",
+          position: "107",
+          release_name: "Led Zeppelin III",
+          artist_name: "Led Zeppelin",
+          release_date: "1970-10-05",
+          release_type: "album",
+          primary_genres: "Hard Rock, Folk Rock",
+          secondary_genres: "Blues Rock",
+          descriptors:
+            "malevocals, pastoral, passionate, energetic, eclectic, longing, hedonistic, rhythmic, melodic",
+          avg_rating: "3.83",
+          rating_count: "24089",
+          review_count: "483",
+        },
+        {
+          "": "108",
+          position: "108",
+          release_name: "Either / Or",
+          artist_name: "Elliott Smith",
+          release_date: "1997-02-25",
+          release_type: "album",
+          primary_genres: "Singer-Songwriter, Indie Folk",
+          secondary_genres: "Indie Pop, Lo-Fi/Slacker Rock",
+          descriptors:
+            "melancholic, mellow, acoustic, depressive, introspective, lonely, melodic, malevocals, bittersweet, sad",
+          avg_rating: "4.11",
+          rating_count: "23777",
+          review_count: "273",
+        },
+        {
+          "": "109",
+          position: "109",
+          release_name: "Songs for the Deaf",
+          artist_name: "Queens of the Stone Age",
+          release_date: "2002-08-27",
+          release_type: "album",
+          primary_genres: "Stoner Rock, Alternative Rock",
+          secondary_genres: "Radio Broadcast Recordings",
+          descriptors:
+            "desert, energetic, conceptalbum, malevocals, drugs, heavy, psychedelic, summer, rhythmic, melodic",
+          avg_rating: "3.94",
+          rating_count: "23761",
+          review_count: "331",
+        },
+        {
+          "": "110",
+          position: "110",
+          release_name: "JESUS IS KING",
+          artist_name: "Kanye West",
+          release_date: "2019-10-25",
+          release_type: "album",
+          primary_genres: "Christian Hip Hop",
+          secondary_genres: "Gospel, Pop Rap, Alternative R&B",
+          descriptors:
+            "Christian, malevocals, spiritual, uplifting, optimistic, passionate, triumphant, introspective, conscious, warm",
+          avg_rating: "2.38",
+          rating_count: "23733",
+          review_count: "300",
+        },
+      ];
+
+
+      //JQuary function-> Captures the input as it's being keyed into the input feild
+      //and returns it to a the <returnSearchData variable.
+
+      $("#newInput").on("keyup", function () {
+        let inputValue = $(this).val();
+
+       console.log(inputValue);
+
+        let returnedSearchData = inputSearchReturn(inputValue, myArray);
+
+        tableBuilder(returnedSearchData);
+      });
+
+      function inputSearchReturn(searchReturnValue, searchReturnArray) {
+        let inputReturnArray = [];
+
+        /*console.log(inputReturnArray);*/
+
+        for (let i = 0; i < searchReturnArray.length; i++) {
+          searchReturnValue = searchReturnValue.toLowerCase();
+          /*console.log(searchValue);*/
+
+          let name = searchReturnArray[i].artist_name.toLowerCase();
+
+          if (name.includes(searchReturnValue)) {
+            inputReturnArray.push(searchReturnArray[i]);
+
+            /*console.log(newInputData);*/
+          }
+        }
+
+        return inputReturnArray;
+      }
+
+      function tableBuilder(data) {
+        let table = document.getElementById("theTable");
+
+        table.innerHTML = "";
+
+        for (let i = 0; i < data.length; i++) {
+          let row = `<tr> 
+                <td>${data[i].position}</td>
+                <td>${data[i].release_name}</td>
+                <td>${data[i].artist_name}</td>
+                
+                <td>${data[i].avg_rating}</td>
+                <td>${data[i].release_date}</td>
+               
+            </tr>`;
+
+          table.innerHTML += row;
+        }
+      }
+
+      tableBuilder(myArray);
+    </script>
+  </body>
+</html>

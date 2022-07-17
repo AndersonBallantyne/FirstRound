@@ -1,0 +1,210 @@
+
+body{
+  background: rgb(0, 0, 0);
+}
+
+.jumbotron{
+    background: hsla(259, 84%, 78%, 1);
+    background: linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B597F6", endColorstr="#96C6EA", GradientType=1 );
+    margin-bottom: 0px;
+}
+
+  #app{
+    background-color: #212529;
+    border-radius: 16px;  
+   
+    
+  }
+  .jumbotron{
+    height: 600px;
+}
+
+  #left_app {
+    background-color: #212529;
+    border-radius: 16px;
+    height: 400px;
+    margin-bottom: 5%;
+    
+}
+
+  #right_app{
+    background-color: #212529;
+    border-radius: 16px;
+    height: 400px; 
+    margin-top: 5%;
+}
+
+
+  .card{
+    background: hsla(259, 84%, 78%, 1);
+    background: linear-gradient(90deg, rgb(246, 152, 208) 0%, hsla(206, 67%, 75%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B597F6", endColorstr="#96C6EA", GradientType=1 );
+}
+
+
+  .card-body1 {
+    background: hsla(259, 84%, 78%, 1);
+    background: linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(259, 84%, 78%, 1) 0%, hsla(206, 67%, 75%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B597F6", endColorstr="#96C6EA", GradientType=1 );
+    width: 350px;
+    height: 60px;
+    border-radius: 6px;
+    padding: 2px 16px 2px 16px;
+    display: inline-flex;
+    margin: 2px; 
+    transition: transform .2s; /* Animation */
+}
+
+  .card-body1:hover{ 
+    transform: scale(1.1);
+    cursor: pointer;
+    
+}
+
+  .row_app_mid{
+    height: 200px;
+    width: 600;
+}
+
+
+  .card{
+    height: 300px;
+    width: auto;
+    transition: .2s;
+    cursor: pointer;
+    border-radius: 16px;
+}
+  
+  .card img{
+    align-content: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    transition: transform .2s; 
+    margin-left: 12px; 
+}
+
+  .card:hover{
+    transform: scale(1.1); 
+  }
+
+.items{
+    padding: 4px 4px 4px 2px;
+    font-style: normal;
+    font-weight: 400; 
+    font-size: calc(1.5vh + 1vw +1%);
+    line-height: 17px;
+    width: 300px;
+    text-align: start;  
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0px;
+}
+
+#cover_filler{
+  
+    text-decoration: none;
+    margin-top: 2px;
+    width: 46px;
+    height: 46px;
+    list-style: none;
+}
+
+#list{ 
+    font-style: normal;
+    font-weight: 400;
+    font-size: cal(.15vh + .5%);
+    line-height: 19px;
+    list-style: none;
+    padding-left: 0px;
+    margin-bottom: 0px;
+    align-items: center;
+    display: contents;  width: 250px;
+}
+#dateline{
+    font-size: 10.5px;
+}
+
+#number{
+    margin-top: 2px;
+    font-size: small;
+}
+
+#leadNames{
+  width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*
+p{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0px;
+}
+*/
+.rounded{
+  border-radius: 10px;
+}
+
+
+#test1{
+  height: 200px;
+  border-radius: 12px;
+
+}
+#testDiv{
+  background-color: #212529;
+    border-radius: 16px;
+    padding-top: 24px; 
+}
+
+
+
+/*
+.row{
+  border: 1px solid rgb(255, 234, 0);
+  
+}
+
+.col{
+  border: .5px solid rgb(0, 191, 255);
+}
+
+div{
+  border: .5px dashed rgb(60, 255, 0);
+}
+
+.container{
+  border: .5px dashed rgb(255, 0, 221);
+}
+
+*/
+.jumbotron-fluid{
+  height: 300px;
+}
+#cta{
+  height: 200px;
+  width: 800px;
+  background-color: #212529;
+  margin-bottom: 32px;
+  display: flex;
+  border-radius: 16px;
+  justify-self: center;
+}
+
+
+
+
+

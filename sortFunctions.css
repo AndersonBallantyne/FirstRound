@@ -1,0 +1,35 @@
+/**, *::before, *::after{
+    box-sizing: content-box;
+  
+} 
+
+body {
+
+    margin: 4px 20px;
+    background-color: azure;
+    
+    gap: 1px;
+    
+}
+#app_div{
+    
+    padding: 3.5px;
+    align-content: center;
+    
+  
+}
+p{
+    
+    padding: 6px 16px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0px; 
+    font-size: small;
+    border-left: 15px solid cornsilk;
+    border-right: 15px solid cornsilk;
+    background-color: bisque;
+   
+       
+}   
+
+*/
